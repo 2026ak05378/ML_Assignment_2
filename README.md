@@ -9,17 +9,17 @@ This project predicts whether a bank customer will subscribe to a term deposit. 
 The project uses the Bank Marketing `bank-full.csv` dataset, containing 45,211 records, 16 input features, and the binary target `y`. It has no missing values. The target is imbalanced: 39,922 clients did not subscribe and 5,289 did.
 
 The 20% holdout in `test_data.csv` was created with stratification and `random_state=42` (9,043 records). The remaining 80% is used for training. Categorical inputs are one-hot encoded and numeric inputs are standardized; these preprocessing steps are fitted on training data only.
-- Dataset Name: Bank Marketing Dataset (bank-full.csv) | Source: UCI Machine Learning Repository.
+**- Dataset Name:** Bank Marketing Dataset (bank-full.csv) | Source: UCI Machine Learning Repository.
 
-**Dataset Size:** The dataset contains 45,211 customer records and 16 input features, meeting the minimum dataset size requirement.
+**- Dataset Size:** The dataset contains 45,211 customer records and 16 input features, meeting the minimum dataset size requirement.
 
-**Target Variable:** The target variable is y, which indicates whether a customer subscribed to a term deposit. A total of 5,289 customers (11.7%) subscribed (yes), while 39,922 customers (88.3%) did not subscribe (no). This shows that the dataset has an imbalanced class distribution.
+**- Target Variable:** The target variable is y, which indicates whether a customer subscribed to a term deposit. A total of 5,289 customers (11.7%) subscribed (yes), while 39,922 customers (88.3%) did not subscribe (no). This shows that the dataset has an imbalanced class distribution.
 
-**Feature Details:** The dataset includes information about customers, such as age, job, marital status, education, account balance, housing loan, and personal loan. It also contains details about marketing campaigns, including contact method, call duration, number of contacts, and previous campaign outcomes.
+**- Feature Details:** The dataset includes information about customers, such as age, job, marital status, education, account balance, housing loan, and personal loan. It also contains details about marketing campaigns, including contact method, call duration, number of contacts, and previous campaign outcomes.
 
-**Data Splitting and Preprocessing:** The dataset was divided into 80% training data (36,168 records) and 20% testing data (9,043 records) using stratified sampling with random_state=42. Categorical features were converted into numerical values using one-hot encoding, while numerical features were standardized. These preprocessing steps were applied using the training data to avoid data leakage. The dataset does not contain any missing values.
+**- Data Splitting and Preprocessing:** The dataset was divided into 80% training data (36,168 records) and 20% testing data (9,043 records) using stratified sampling with random_state=42. Categorical features were converted into numerical values using one-hot encoding, while numerical features were standardized. These preprocessing steps were applied using the training data to avoid data leakage. The dataset does not contain any missing values.
 
-**Important Note:** The duration feature represents the length of the phone call. Since this information is available only after the call is completed, models using this feature may not reflect how accurately the bank can identify potential customers before making a call.
+**- Important Note:** The duration feature represents the length of the phone call. Since this information is available only after the call is completed, models using this feature may not reflect how accurately the bank can identify potential customers before making a call.
 
 ## c. GitHub Repository Link
 
