@@ -47,7 +47,7 @@ From the project directory, install dependencies, train and evaluate the models,
 ```powershell
 python -m pip install -r requirements.txt
 python test_model.py
-streamlit run streamlit_app.py
+streamlit run app.py
 ```
 
 `test_model.py` verifies the holdout against the source dataset, prints the comparison table, saves the fitted preprocessing transformer and five classifiers under `model/`, and writes the evaluation table to `model/evaluation_metrics.csv`. The Streamlit dashboard checks that all model artifacts exist and displays the saved metrics for `test_data.csv`.
