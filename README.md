@@ -2,7 +2,7 @@
 
 ## a. Problem statement
 
-Predict whether a bank client subscribes to a term deposit (`y = yes`) using client, campaign, and previous-contact information. The positive class is `yes`.
+This project predicts whether a bank customer will subscribe to a term deposit. The model uses customer details and information about the bank's contact with the customer. In the target column `y`, `yes` means the customer subscribed and `no` means they did not.
 
 ## b. Dataset description
 
