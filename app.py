@@ -1,5 +1,5 @@
 # ==========================================
-# STEP 2: ML MODELS & EVALUATION METRICS
+# ML MODELS & EVALUATION METRICS
 # ==========================================
 
 import pandas as pd
