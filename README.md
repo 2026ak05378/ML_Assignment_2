@@ -12,9 +12,13 @@ The 20% holdout in `test_data.csv` was created with stratification and `random_s
 - Dataset Name: Bank Marketing Dataset (bank-full.csv) | Source: UCI Machine Learning Repository.
 
 **Dataset Size:** The dataset contains 45,211 customer records and 16 input features, meeting the minimum dataset size requirement.
+
 **Target Variable:** The target variable is y, which indicates whether a customer subscribed to a term deposit. A total of 5,289 customers (11.7%) subscribed (yes), while 39,922 customers (88.3%) did not subscribe (no). This shows that the dataset has an imbalanced class distribution.
+
 **Feature Details:** The dataset includes information about customers, such as age, job, marital status, education, account balance, housing loan, and personal loan. It also contains details about marketing campaigns, including contact method, call duration, number of contacts, and previous campaign outcomes.
+
 **Data Splitting and Preprocessing:** The dataset was divided into 80% training data (36,168 records) and 20% testing data (9,043 records) using stratified sampling with random_state=42. Categorical features were converted into numerical values using one-hot encoding, while numerical features were standardized. These preprocessing steps were applied using the training data to avoid data leakage. The dataset does not contain any missing values.
+
 **Important Note:** The duration feature represents the length of the phone call. Since this information is available only after the call is completed, models using this feature may not reflect how accurately the bank can identify potential customers before making a call.
 
 ## c. GitHub Repository Link
