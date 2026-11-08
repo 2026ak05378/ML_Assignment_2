@@ -12,6 +12,21 @@ The 20% holdout in `test_data.csv` was created with stratification and `random_s
 
 **Dataset Details**
 
+- **Dataset:** Bank Marketing Dataset (`bank-full.csv`) – UCI Machine Learning Repository.
+- **Problem Type:** Binary Classification.
+- **Target Variable:** `y`
+  - `yes` – Customer subscribed to a term deposit.
+  - `no` – Customer did not subscribe.
+- **Data Preprocessing:** Handling categorical and numerical features using One-Hot Encoding and StandardScaler.
+- **Exploratory Data Analysis (EDA):** Analysing customer characteristics, feature distributions, and target class imbalance.
+- **Model Development:** Training and comparing different machine learning classification algorithms.
+- **Model Evaluation:** Evaluating performance using Accuracy, Precision, Recall, F1-Score, ROC-AUC, and Matthews Correlation Coefficient (MCC).
+- **Confusion Matrix:** Analysing correct and incorrect predictions for both classes.
+
+## Expected Outcome
+
+Develop a machine learning classification model to identify customers who are likely to subscribe to a bank term deposit and support better data-driven marketing decisions.
+
 
 **Dataset Name:** Bank Marketing Dataset (bank-full.csv) | Source: UCI Machine Learning Repository.
 
