@@ -4,13 +4,14 @@
 
 This project predicts whether a bank customer will subscribe to a term deposit. The model uses customer details and information about the bank's contact with the customer. In the target column `y`, `yes` means the customer subscribed and `no` means they did not.
 
-**Following are Details** 
-
 ## b. Dataset description
 
 The project uses the Bank Marketing `bank-full.csv` dataset, containing 45,211 records, 16 input features, and the binary target `y`. It has no missing values. The target is imbalanced: 39,922 clients did not subscribe and 5,289 did.
 
 The 20% holdout in `test_data.csv` was created with stratification and `random_state=42` (9,043 records). The remaining 80% is used for training. Categorical inputs are one-hot encoded and numeric inputs are standardized; these preprocessing steps are fitted on training data only.
+
+**Following are Details**
+
 
 **Dataset Name:** Bank Marketing Dataset (bank-full.csv) | Source: UCI Machine Learning Repository.
 
