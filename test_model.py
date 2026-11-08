@@ -20,6 +20,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 
 
+# This file loads the dataset, trains several ML models, and saves the results.
+# The project root is used to find data files and model output folders.
 ROOT = Path(__file__).resolve().parent
 DATA_PATH = ROOT / "data" / "bank-full.csv"
 TEST_DATA_PATH = ROOT / "test_data.csv"
@@ -27,6 +29,7 @@ MODEL_DIR = ROOT / "model"
 METRICS_PATH = MODEL_DIR / "evaluation_metrics.csv"
 TARGET = "y"
 POSITIVE_LABEL = "yes"
+# These names tell us where each trained model is saved on disk.
 MODEL_FILES = {
     "Logistic Regression": "logistic_regression.joblib",
     "Decision Tree": "decision_tree.joblib",
@@ -36,14 +39,18 @@ MODEL_FILES = {
 }
 
 
+# Main script entry. It trains all models and prints the comparison table.
 def main():
+    # Read the full bank dataset. The file uses semicolon as the separator.
     data = pd.read_csv(DATA_PATH, sep=";")
+    # Split the data into train and test sets. We keep the same class balance in both sets.
     train_data, expected_test_data = train_test_split(
         data,
         test_size=0.20,
         random_state=42,
         stratify=data[TARGET],
     )
+    # The test file is fixed and must match the expected split from the training process.
     test_data = pd.read_csv(TEST_DATA_PATH)
     expected_test_data = expected_test_data.reset_index(drop=True)
     pd.testing.assert_frame_equal(
@@ -53,11 +60,13 @@ def main():
         check_exact=True,
     )
 
+    # Separate the target column from the input features.
     X_train = train_data.drop(columns=TARGET)
     y_train = train_data[TARGET]
     X_test = test_data.drop(columns=TARGET)
     y_test = test_data[TARGET]
 
+    # Convert text columns to numbers and scale numeric columns before training.
     categorical_features = X_train.select_dtypes(include="object").columns
     numerical_features = X_train.select_dtypes(exclude="object").columns
     preprocessor = ColumnTransformer(
@@ -70,11 +79,13 @@ def main():
             ("numerical", StandardScaler(), numerical_features),
         ]
     )
+    # Fit the preprocessing steps and save the transformer so it can be reused later.
     X_train_encoded = preprocessor.fit_transform(X_train)
     X_test_encoded = preprocessor.transform(X_test)
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     joblib.dump(preprocessor, MODEL_DIR / "preprocessor.joblib")
 
+    # Define the machine learning models to compare.
     models = {
         "Logistic Regression": LogisticRegression(max_iter=1000),
         "Decision Tree": DecisionTreeClassifier(
@@ -86,6 +97,7 @@ def main():
         "Support Vector Machine": SVC(kernel="rbf", random_state=42),
     }
 
+    # Train each model, save it, and record the evaluation metrics.
     results = []
     for model_name, model in models.items():
         if isinstance(model, GaussianNB):
@@ -142,6 +154,7 @@ def main():
             }
         )
 
+    # Sort by accuracy to show the best model first and save the metrics for the app.
     results_df = pd.DataFrame(results).sort_values(
         by="Accuracy",
         ascending=False,

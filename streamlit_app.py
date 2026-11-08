@@ -1,9 +1,11 @@
+# This app shows the saved model evaluation results in a simple dashboard.
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 
 
+# These paths point to the trained model files and the saved metric table.
 ROOT = Path(__file__).resolve().parent
 MODEL_DIR = ROOT / "model"
 TEST_DATA_PATH = ROOT / "test_data.csv"
@@ -26,17 +28,20 @@ METRIC_COLUMNS = [
 ]
 
 
+# Load the fixed test dataset from CSV to display the evaluation set size.
 @st.cache_data
 def load_test_data():
     return pd.read_csv(TEST_DATA_PATH)
 
 
+# Load the saved performance table created by the training script.
 @st.cache_data
 def load_metrics():
     return pd.read_csv(METRICS_PATH)
 
 
 def main():
+    # Set up the page title and full-width layout for the dashboard.
     st.set_page_config(
         page_title="Bank Marketing Model Comparison",
         page_icon="📊",
@@ -48,6 +53,7 @@ def main():
         "The positive class is subscription: yes."
     )
 
+    # Check that the model files and metric file exist before showing the page.
     try:
         missing_models = [
             filename
@@ -66,6 +72,7 @@ def main():
         st.code("python test_model.py", language="powershell")
         st.stop()
 
+    # Show a ranked table of the models with their performance scores.
     st.subheader("Model comparison")
     st.dataframe(
         results_df,
@@ -77,6 +84,7 @@ def main():
         },
     )
 
+    # Explain the dataset size and the target class used in the metrics.
     st.caption(
         f"Evaluation set: {len(test_data):,} records. "
         "Metrics use the yes class for precision, recall, and F1."
@@ -84,4 +92,5 @@ def main():
 
 
 if __name__ == "__main__":
+    # Start the dashboard when this Python file is run directly.
     main()
