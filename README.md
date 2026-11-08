@@ -10,7 +10,7 @@ The project uses the Bank Marketing `bank-full.csv` dataset, containing 45,211 r
 
 The 20% holdout in `test_data.csv` was created with stratification and `random_state=42` (9,043 records). The remaining 80% is used for training. Categorical inputs are one-hot encoded and numeric inputs are standardized; these preprocessing steps are fitted on training data only.
 
-** Dataset Details **
+**Dataset Details**
 
 
 **Dataset Name:** Bank Marketing Dataset (bank-full.csv) | Source: UCI Machine Learning Repository.
